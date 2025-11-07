@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pendaftaran Program - LPK</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #1a2961;
+        --navy-light: #2a3f73;
+        --navy-lighter: #3a5085;
+        --accent: #ffd700;
+        --text: #1a1a1a;
+        --text-light: #666666;
+        --text-lighter: #999999;
+        --white: #ffffff;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: var(--text);
+        background: var(--white);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 3vw, 2rem);
+      }
+
+      /* Header */
+      header {
+        background: var(--navy);
+        padding: clamp(1rem, 2vw, 1.5rem) 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: clamp(1rem, 2vw, 2rem);
+        align-items: center;
+        padding: clamp(0.5rem, 1vw, 0.8rem) 0;
+      }
+
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: clamp(0.5rem, 1.2vw, 0.7rem) clamp(0.8rem, 1.8vw, 1.2rem);
+        background-color: transparent;
+        color: var(--text-light);
+        border: 1px solid var(--navy-lighter);
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        cursor: pointer;
+        font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+        min-height: 44px;
+      }
+
+      .btn-back:hover {
+        background-color: var(--navy-lighter);
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .btn-back i {
+        font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+      }
+
+      .header-title h2 {
+        color: var(--white);
+        font-size: clamp(1rem, 2.2vw, 1.4rem);
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: var(--white);
+        font-weight: 600;
+        font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      }
+
+      .logo img {
+        height: clamp(30px, 5vw, 40px);
+      }
+
+      /* Registration Hero Section */
+      .registration-hero {
+        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        padding: clamp(80px, 12vw, 120px) 0 clamp(50px, 8vw, 80px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .registration-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        color: var(--white);
+      }
+
+      .hero-content h1 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero-content p {
+        font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 600px;
+      }
+
+      /* Main Registration Section */
+      .registration-section {
+        padding: clamp(3rem, 6vw, 5rem) 0;
+      }
+
+      .registration-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 4vw, 4rem);
+        align-items: start;
+      }
+
+      /* Info Card */
+      .registration-info {
+        background: var(--navy-light);
+        padding: clamp(2rem, 4vw, 3rem);
+        border-radius: 15px;
+      }
+
+      .registration-info h3 {
+        color: var(--white);
+        font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      .info-item {
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        display: flex;
+        gap: 1rem;
+      }
+
+      .info-icon {
+        width: clamp(50px, 8vw, 70px);
+        height: clamp(50px, 8vw, 70px);
+        background: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--navy);
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        flex-shrink: 0;
+      }
+
+      .info-content h4 {
+        color: var(--white);
+        margin-bottom: 0.3rem;
+        font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      }
+
+      .info-content p {
+        color: var(--text-lighter);
+        font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+      }
+
+      /* Registration Form */
+      .registration-form {
+        background: var(--navy-light);
+        padding: clamp(2rem, 4vw, 3rem);
+        border-radius: 15px;
+      }
+
+      .registration-form h3 {
+        color: var(--white);
+        font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      .form-group {
+        margin-bottom: clamp(1.2rem, 2vw, 1.5rem);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        color: var(--white);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: clamp(0.8rem, 1.5vw, 1rem);
+        border: 2px solid var(--navy-lighter);
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+        color: var(--text);
+        background: #fafbfc;
+        transition: var(--transition);
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: var(--text-lighter);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(1rem, 2vw, 1.5rem);
+      }
+
+      .form-group.checkbox {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      .form-group.checkbox input {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        cursor: pointer;
+        accent-color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      .form-group.checkbox label {
+        margin: 0;
+        cursor: pointer;
+        font-weight: 400;
+        color: var(--text-lighter);
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: clamp(1rem, 2vw, 1.2rem);
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        color: var(--navy);
+        border: none;
+        border-radius: 8px;
+        font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(255, 215, 0, 0.3);
+      }
+
+      .btn-submit:active {
+        transform: translateY(-1px);
+      }
+
+      /* Success Message */
+      .success-message {
+        display: none;
+        background: #d4edda;
+        color: #155724;
+        padding: clamp(1rem, 2vw, 1.5rem);
+        border-radius: 8px;
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        border-left: 4px solid #28a745;
+        animation: slideDown 0.3s ease;
+      }
+
+      .success-message.show {
+        display: block;
+      }
+
+      .error-message {
+        display: none;
+        background: #f8d7da;
+        color: #721c24;
+        padding: clamp(1rem, 2vw, 1.5rem);
+        border-radius: 8px;
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        border-left: 4px solid #f5c6cb;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
+        .registration-container {
+          grid-template-columns: 1fr;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          grid-template-columns: auto 1fr;
+          gap: clamp(0.8rem, 1.5vw, 1.2rem);
+        }
+
+        .header-title {
+          grid-column: 1 / -1;
+          text-align: center;
+          order: -1;
+        }
+
+        .header-actions {
+          justify-self: end;
+        }
+
+        .logo span {
+          display: none;
+        }
+
+        .hero-content h1 {
+          font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .btn-back {
+          padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.2vw, 0.8rem);
+          font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+        }
+
+        .btn-back span {
+          display: none;
+        }
+
+        .btn-back i {
+          margin-right: 0;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="javascript:history.back()" class="btn-back">
+            <i class="fas fa-arrow-left"></i>
+            <span>Kembali</span>
+          </a>
+          <div class="header-title">
+            <h2>Pendaftaran Program</h2>
+          </div>
+          <div class="header-actions">
+            <a href="#" class="logo">
+              <img src="assets/logo.png" alt="LPK Logo" />
+              <span>LKP NEXGEN</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="registration-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Daftar Program Komputer Dasar</h1>
+          <p>Mulai perjalanan Anda menuju penguasaan keterampilan komputer fundamental bersama LKP NEXGEN</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Registration Section -->
+    <section class="registration-section">
+      <div class="container">
+        <div class="registration-container">
+          <!-- Info Card -->
+          <div class="registration-info">
+            <h3>Mengapa Mendaftar?</h3>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="info-content">
+                <h4>Kurikulum Terstruktur</h4>
+                <p>Program yang dirancang khusus untuk pemula dengan materi yang terorganisir dengan baik</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="info-content">
+                <h4>Instruktur Berpengalaman</h4>
+                <p>Belajar langsung dari praktisi berpengalaman dengan rekam jejak yang terbukti</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div class="info-content">
+                <h4>Sertifikasi Resmi</h4>
+                <p>Dapatkan sertifikat BNSP dan Microsoft Office yang diakui industri</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <div class="info-content">
+                <h4>Karir Support</h4>
+                <p>Dapatkan bantuan dalam mencari pekerjaan sesuai skill yang telah dikuasai</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Registration Form -->
+          <div class="registration-form">
+            <h3>Form Pendaftaran</h3>
+            
+            <div id="successMessage" class="success-message">
+              <i class="fas fa-check-circle"></i> Pendaftaran berhasil! Kami akan menghubungi Anda segera.
+            </div>
+
+            <div id="errorMessage" class="error-message">
+              <i class="fas fa-exclamation-circle"></i> <span id="errorText"></span>
+            </div>
+
+            <form id="registrationForm">
+              <div class="form-group">
+                <label for="fullname">Nama Lengkap *</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Masukkan nama lengkap Anda" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email *</label>
+                  <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Nomor Telepon *</label>
+                  <input type="tel" id="phone" name="phone" placeholder="08xxxxxxxxxx" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="education">Pendidikan Terakhir *</label>
+                  <select id="education" name="education" required>
+                    <option value="">Pilih Pendidikan Terakhir</option>
+                    <option value="sd">SD</option>
+                    <option value="smp">SMP</option>
+                    <option value="sma">SMA/SMK</option>
+                    <option value="diploma">Diploma (D3)</option>
+                    <option value="sarjana">Sarjana (S1)</option>
+                    <option value="magister">Magister (S2)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">Pilih Program</label>
+                  <select id="batch" name="batch" required>
+                    <option value="">Pilih Program</option>
+                    <option value="Komputer Dasar">Komputer Dasar</option>
+                    <option value="Desain Grafis">Desain Grafis</option>
+                    <option value="Content Creator">Content Creator</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="motivation">Motivasi Mengikuti Program</label>
+                <textarea id="motivation" name="motivation" rows="4" placeholder="Ceritakan motivasi Anda mengikuti program ini..."></textarea>
+              </div>
+
+              <div class="form-group checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Saya setuju dengan syarat dan ketentuan yang berlaku</label>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <i class="fas fa-check"></i> Daftar Sekarang
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const registrationForm = document.getElementById("registrationForm");
+      const successMessage = document.getElementById("successMessage");
+      const errorMessage = document.getElementById("errorMessage");
+      const errorText = document.getElementById("errorText");
+
+      registrationForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Reset messages
+        successMessage.classList.remove("show");
+        errorMessage.classList.remove("show");
+
+        const fullname = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const education = document.getElementById("education").value;
+        const motivation = document.getElementById("motivation").value.trim();
+        const batch = document.getElementById("program").value;
+        const terms = document.getElementById("terms").checked;
+
+        // Validasi
+        if (!fullname) {
+          showError("Nama lengkap harus diisi");
+          return;
+        }
+
+        if (!email || !validateEmail(email)) {
+          showError("Email tidak valid");
+          return;
+        }
+
+        if (!phone) {
+          showError("Nomor telepon harus diisi");
+          return;
+        }
+
+        if (!education) {
+          showError("Pendidikan terakhir harus dipilih");
+          return;
+        }
+
+        if (!batch) {
+          showError("Program harus dipilih");
+          return;
+        }
+
+        if (!terms) {
+          showError("Anda harus menyetujui syarat dan ketentuan");
+          return;
+        }
+
+        // Data registration
+        const registrationData = {
+          fullname,
+          email,
+          phone,
+          education,
+          motivation,
+          batch,
+          timestamp: new Date().toLocaleString('id-ID')
+        };
+
+        // Log data (bisa diganti dengan API call)
+        console.log("Data Pendaftaran:", registrationData);
+
+        // Show success message
+        successMessage.classList.add("show");
+
+        // Reset form
+        registrationForm.reset();
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.classList.remove("show");
+        }, 5000);
+      });
+
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function showError(message) {
+        errorText.textContent = message;
+        errorMessage.classList.add("show");
+
+        setTimeout(() => {
+          errorMessage.classList.remove("show");
+        }, 4000);
+      }
+    </script>
+  </body>
+</html>
